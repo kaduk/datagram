@@ -5,9 +5,9 @@
 QUIC                                                            T. Pauly
 Internet-Draft                                                E. Kinnear
 Intended status: Standards Track                              Apple Inc.
-Expires: 9 June 2022                                         D. Schinazi
+Expires: 18 July 2022                                        D. Schinazi
                                                               Google LLC
-                                                         6 December 2021
+                                                         14 January 2022
 
 
                 An Unreliable Datagram Extension to QUIC
@@ -18,6 +18,17 @@ Abstract
    This document defines an extension to the QUIC transport protocol to
    add support for sending and receiving unreliable datagrams over a
    QUIC connection.
+
+Discussion Venues
+
+   This note is to be removed before publishing as an RFC.
+
+   Discussion of this document takes place on the QUIC Working Group
+   mailing list (mailto:quic@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/quic/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/quicwg/datagram.
 
 Status of This Memo
 
@@ -34,11 +45,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 June 2022.
+   This Internet-Draft will expire on 18 July 2022.
 
 Copyright Notice
 
-   Copyright (c) 2021 IETF Trust and the persons identified as the
+   Copyright (c) 2022 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -148,10 +159,11 @@ Table of Contents
    willing to receive such frames on this connection.
 
    An endpoint MUST NOT send DATAGRAM frames until it has received the
-   max_datagram_frame_size transport parameter with a non-zero value.
-   An endpoint MUST NOT send DATAGRAM frames that are larger than the
-   max_datagram_frame_size value it has received from its peer.  An
-   endpoint that receives a DATAGRAM frame when it has not indicated
+   max_datagram_frame_size transport parameter with a non-zero value
+   during the handshake (or during a previous handshake if 0-RTT is
+   used).  An endpoint MUST NOT send DATAGRAM frames that are larger
+   than the max_datagram_frame_size value it has received from its peer.
+   An endpoint that receives a DATAGRAM frame when it has not indicated
    support via the transport parameter MUST terminate the connection
    with an error of type PROTOCOL_VIOLATION.  Similarly, an endpoint
    that receives a DATAGRAM frame that is larger than the value it sent
@@ -228,7 +240,8 @@ Table of Contents
    deliver the data to the application immediately, as long as it is
    able to process the frame and can store the contents in memory.
 
-   DATAGRAM frames MUST be protected with either 0-RTT or 1-RTT keys.
+   Like STREAM frames, DATAGRAM frames contain application data and MUST
+   be protected with either 0-RTT or 1-RTT keys.
 
    Note that while the max_datagram_frame_size transport parameter
    places a limit on the maximum size of DATAGRAM frames, that limit can
@@ -254,7 +267,9 @@ Table of Contents
 
    If the application needs to support the coexistence of multiple flows
    of datagrams, one recommended pattern is to use a variable-length
-   integer at the beginning of the Datagram Data field.
+   integer at the beginning of the Datagram Data field.  This is a
+   simple approach that allows a large number of flows to be encoded
+   using minimal space.
 
    QUIC implementations SHOULD present an API to applications to assign
    relative priorities to DATAGRAM frames with respect to each other and
@@ -335,8 +350,8 @@ Table of Contents
    The use of DATAGRAM frames might be detectable by an adversary on
    path that is capable of dropping packets.  Since DATAGRAM frames do
    not use transport-level retransmission, connections that use DATAGRAM
-   frames might be distinguished from other frames using the different
-   response to loss.
+   frames might be distinguished from other connections due to their
+   different response to packet loss.
 
 7.  IANA Considerations
 

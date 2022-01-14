@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-12-15T00:33:41.048076+00:00",
+  "timestamp": "2022-01-14T17:42:31.911519+00:00",
   "repo": "quicwg/datagram",
   "labels": [
     {
@@ -5135,7 +5135,7 @@
       "id": "PR_kwDODoD7Ms4v2-Te",
       "title": "Clarify fingerprinting security consideration",
       "url": "https://github.com/quicwg/datagram/pull/74",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "tfpauly",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -5144,13 +5144,55 @@
       "labels": [],
       "body": "Addresses Opsdir review comment",
       "createdAt": "2021-12-15T00:33:37Z",
-      "updatedAt": "2021-12-15T00:33:37Z",
+      "updatedAt": "2021-12-15T05:54:04Z",
       "baseRepository": "quicwg/datagram",
       "baseRefName": "main",
       "baseRefOid": "61299cfa3cec9815109604e274ada270372b314f",
       "headRepository": "quicwg/datagram",
       "headRefName": "tfpauly-patch-1",
       "headRefOid": "cc9af8c986bab998b1e24024084aa7251233a995",
+      "closedAt": "2021-12-15T05:54:04Z",
+      "mergedAt": "2021-12-15T05:54:04Z",
+      "mergedBy": "tfpauly",
+      "mergeCommit": {
+        "oid": "bf5ec7702d7489a8bec0f65d726d21e09b2a6a3d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDODoD7Ms4xmjPh",
+          "commit": {
+            "abbreviatedOid": "cc9af8c"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Thanks",
+          "createdAt": "2021-12-15T00:43:07Z",
+          "updatedAt": "2021-12-15T00:43:07Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 75,
+      "id": "PR_kwDODoD7Ms4xDT2m",
+      "title": "Clarify 0-RTT TP",
+      "url": "https://github.com/quicwg/datagram/pull/75",
+      "state": "OPEN",
+      "author": "DavidSchinazi",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #63 ",
+      "createdAt": "2022-01-14T17:42:26Z",
+      "updatedAt": "2022-01-14T17:42:26Z",
+      "baseRepository": "quicwg/datagram",
+      "baseRefName": "main",
+      "baseRefOid": "bf5ec7702d7489a8bec0f65d726d21e09b2a6a3d",
+      "headRepository": "quicwg/datagram",
+      "headRefName": "clarify_0rtt",
+      "headRefOid": "f44720a432161452eff931320a949d879780b3a4",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,

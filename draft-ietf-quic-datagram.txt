@@ -5,9 +5,9 @@
 QUIC                                                            T. Pauly
 Internet-Draft                                                E. Kinnear
 Intended status: Standards Track                              Apple Inc.
-Expires: 18 June 2022                                        D. Schinazi
+Expires: 18 July 2022                                        D. Schinazi
                                                               Google LLC
-                                                        15 December 2021
+                                                         14 January 2022
 
 
                 An Unreliable Datagram Extension to QUIC
@@ -45,11 +45,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 June 2022.
+   This Internet-Draft will expire on 18 July 2022.
 
 Copyright Notice
 
-   Copyright (c) 2021 IETF Trust and the persons identified as the
+   Copyright (c) 2022 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -159,10 +159,11 @@ Table of Contents
    willing to receive such frames on this connection.
 
    An endpoint MUST NOT send DATAGRAM frames until it has received the
-   max_datagram_frame_size transport parameter with a non-zero value.
-   An endpoint MUST NOT send DATAGRAM frames that are larger than the
-   max_datagram_frame_size value it has received from its peer.  An
-   endpoint that receives a DATAGRAM frame when it has not indicated
+   max_datagram_frame_size transport parameter with a non-zero value
+   during the handshake (or during a previous handshake if 0-RTT is
+   used).  An endpoint MUST NOT send DATAGRAM frames that are larger
+   than the max_datagram_frame_size value it has received from its peer.
+   An endpoint that receives a DATAGRAM frame when it has not indicated
    support via the transport parameter MUST terminate the connection
    with an error of type PROTOCOL_VIOLATION.  Similarly, an endpoint
    that receives a DATAGRAM frame that is larger than the value it sent
